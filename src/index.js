@@ -9,11 +9,18 @@ function loadData() {
     .then(res => res.json())
     .then(results => {
         missionsArray.push(results)
-        addMission(missionsArray[0][105].flight_number)
-        addMission(missionsArray[0][105].launch_year)
-        addMission(missionsArray[0][105].details)
-
-        missionArray.forEach(element => console.log(element))
+        missionKeys = Object.keys(missionsArray[0][3])
+        missionValues = Object.values(missionsArray[0][3])
+        console.log(missionKeys)
+        console.log(missionValues)
+        addMission(missionKeys)
+        addMission(missionValues)
+            // missionsArray[0] = id index
+            // missionsArray[0][0] = keys 
+            // Need to iterate over keys and values with second array index
+            // User can "SUBMIT" a number 1 - 109 (+1 index) and get read out of flight data
+            // User can look at flight names by year via drop down menu
+            // User can select via "MOUSE CLICK" a flight name and see it's detailed info
        
     })
 }
