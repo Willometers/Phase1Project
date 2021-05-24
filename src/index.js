@@ -3,18 +3,17 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 function loadData() {
-    let missionArray = []
+    let missionsArray = []
     const spacexAPI = "https://api.spacexdata.com/v2/launches"
     fetch(spacexAPI)
     .then(res => res.json())
     .then(results => {
-        // console.log(results[`${missionId}`])
-        // results.forEach(element => (element))
-        console.log(results.length)
-        console.log(results[0].flight_number)
-        missionArray.push(results)
-        console.log(missionArray)
-        // addMission(results[0].mission_name)
+        missionsArray.push(results)
+        addMission(missionsArray[0][105].flight_number)
+        addMission(missionsArray[0][105].launch_year)
+        addMission(missionsArray[0][105].details)
+
+        missionArray.forEach(element => console.log(element))
        
     })
 }
