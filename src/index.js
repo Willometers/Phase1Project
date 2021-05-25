@@ -1,5 +1,8 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     loadData();
+    
 })
 
 function loadData() {
@@ -8,41 +11,55 @@ function loadData() {
     fetch(spacexAPI)
     .then(res => res.json())
     .then(results => {
-        
-        // num will be submit that allows user to enter a flight number
+        results.forEach(miss => 
+            addLi(miss.mission_name))
         missionsArray.push(results)
-
-        const inputForm = document.querySelector('form');
-        inputForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let input = document.querySelector('input#searchByFn');
-        console.log(input.value)
-        let num = 7
-        let i = input.value
-        missionKeys = Object.keys(missionsArray[0][`${num}`]) 
-        missionValues = Object.values(missionsArray[0][`${num}`])
-        console.log(missionKeys[i])
-        console.log(missionValues[i])
-        addLi(`${missionKeys[i]}` + `:` + ` `+ `${missionValues[i]}`)
-            })
-
-        
-        // let i = input.value
-        //  will determine key:value set - perhaps preset 
-        
-            // missionsArray[0] = id index
-            // missionsArray[0][0] = keys 
-            // Need to iterate over keys and values with second array index
-            // User can "SUBMIT" a number 1 - 109 (+1 index) and get read out of flight data
-            // User can look at flight names by year via drop down menu
-            // User can select via "MOUSE CLICK" a flight name and see it's detailed info
+        console.log(missionsArray)
+        // const inputForm = document.querySelector('form');
+        // inputForm.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+            
+        //     let input = document.querySelector('input#searchByFn');
+        //     console.log(input.value)
+        //     let num = input.value-1
+        //     let i = 17
+        //     missionKeys = Object.keys(missionsArray[0][`${num}`]) 
+        //     missionValues = Object.values(missionsArray[0][`${num}`])
+        //     // console.log(missionKeys[i])
+        //     // console.log(missionValues[i])
+        //     addMissionLi(`${missionKeys[i]}` + `:` + ` `+ `${missionValues[i]}`)
+        //     document.contact-form.reset();
+        // // })
+    // }
     })
 }
 
 function addLi(input) {
-    let ul = document.querySelector('#mission-list');
+    let ol = document.querySelector('#mission-list');
     let li = document.createElement('li');
     li.innerText = input;
-    ul.appendChild(li);
+    ol.appendChild(li);
+};
+
+function displayInfo() {
+    const detailContainer = document.getElementById("mission-info")
+    const displayPlace = document.createElement('div')
+
+    displayPlace.innerHTML += `
+        <div class='card' id='missionDetails'>
+            <h2>${missionValues[i]}</h2>
+            <img src="">Mission Patch</img>
+        </div>
+        `
+    detailContainer.appendChild(displayPlace)
+
+    console.log(displayInfo)
+
 }
 
+// num will be submit that allows user to enter a flight number
+// will determine key:value set - perhaps preset 
+// Need to iterate over keys and values with second array index
+// User can "SUBMIT" a number 1 - 109 (+1 index) and get read out of flight data
+// User can look at flight names by year via drop down menu
+// User can select via "MOUSE CLICK" a flight name and see it's detailed.

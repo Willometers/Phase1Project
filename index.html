@@ -2,27 +2,32 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>SpaceX Missions</title>
+    <title>Space X Missions</title>
   </head>
-
   <body>
 
     <h1>Space X Missions</h1>
+
+    <div id="mission-info">
+        <!-- list submit output here -->
+        <div class='card' id='missionDetails'>
+            <h2>${missionValues[i]}</h2>
+            <img src="">Mission Patch</img>
+        </div>
+    </div>
+
     <form id="form">
         <!-- <label for="searchByFn">Search By Flight Number</label> -->
-        <input id="searchByFn" type="text" placeholder="Enter Flight here"/>
+        <input id="searchByFn" type="text" placeholder="Enter Flight Number"/>
         <input type="submit">
     </form>
 
-    <ul id="mission-list">
-
-        
-    </ul>
-
+    <ol id="mission-list">
+        <!-- list all flight data here -->
+    </ol>
 
   </body>
-
-  <script src="src/index.js" charset="utf-8"></script>
+  <script src="src/mockIndex.js" charset="utf-8"></script>
 </html>
 
 
