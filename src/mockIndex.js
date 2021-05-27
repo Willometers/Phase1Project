@@ -22,12 +22,22 @@ function addList(results) {
         imageTag.src = results.links.patch.small
         ol.appendChild(imageTag)
         const infoTag = document.createElement('p')
-        // const timer = () => {
+        // const timer = dayDiff() {
         //     const launchTime = results.date_utc
         //     const endDate = Date.parse(launchTime)
         //     const startDate = 
         //     console.log(launchTime)
         // }
+
+        function getTimeRemaining(endtime){
+            const total = Date.parse(endtime) - Date.parse(new Date());
+            days = (total / (1000*60*60*24))
+            if (days > 0)
+                return Math.round(days)
+            else 
+                return ("Blast Off!")
+          }
+
         infoTag.innerText = `
         Mission Number: 
         ${results.flight_number}
@@ -38,8 +48,8 @@ function addList(results) {
         Mission Date: 
         ${results.date_local}
 
-        Countdown:
-        
+        Days until Launch:
+        ${getTimeRemaining(results.date_utc)}
 
         Mission Details: 
         ${results.details}
@@ -69,7 +79,6 @@ function addList(results) {
    
     // })
     
-
 };
 
 fetchMissions()
