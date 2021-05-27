@@ -11,6 +11,7 @@ fetch(LAUNCH_URL)
 function addList(results) {
     const ol = document.querySelector('#mission-list');
     const li = document.createElement('li');
+    const form = document.querySelector('#form')
 
     const aTag = document.createElement('a')
     aTag.href = '#'
@@ -22,12 +23,6 @@ function addList(results) {
         imageTag.src = results.links.patch.small
         ol.appendChild(imageTag)
         const infoTag = document.createElement('p')
-        // const timer = dayDiff() {
-        //     const launchTime = results.date_utc
-        //     const endDate = Date.parse(launchTime)
-        //     const startDate = 
-        //     console.log(launchTime)
-        // }
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());
@@ -35,7 +30,7 @@ function addList(results) {
             if (days > 0)
                 return Math.round(days)
             else 
-                return ("Blast Off!")
+                return ("Blasted Off!")
           }
 
         infoTag.innerText = `
@@ -70,18 +65,17 @@ function addList(results) {
     li.append(aTag)
 
     ol.appendChild(li)
-
-    // const searchBar = document.getElementById('form')
-    
-    // searchBar.addEventListener('submit', (e) => {
-    //     e.preventDefault();
-    //     console.log(e.value)
-   
-    // })
     
 };
 
 fetchMissions()
 
+function dropDown() {
+    fetch(LAUNCH_URL)
+    .then(res => res.json())
+    .then(flights => {
+        console.log(flights[0].date_utc)
 
-  
+    })}
+
+dropDown()

@@ -12,13 +12,15 @@
         <!-- list submit output here -->
     </div>
 
-    <!-- <form id="form">
-        <input id="searchByMission" type="text" placeholder="Search Mission Name"/>
-        <input type="submit">
-    </form> -->
+    <form name="form1" id="form1" action="/action_page.php">
+        Display Launches by Year: <select name="Year" id="topic">
+          <option value="" selected="selected">Year</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
 
     <div>
-        <h3>All Launches</h3>
         <ol id="mission-list">
         <!-- list all flight data here -->
         </ol>
