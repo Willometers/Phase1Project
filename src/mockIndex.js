@@ -22,34 +22,54 @@ function addList(results) {
         imageTag.src = results.links.patch.small
         ol.appendChild(imageTag)
         const infoTag = document.createElement('p')
+        // const timer = () => {
+        //     const launchTime = results.date_utc
+        //     const endDate = Date.parse(launchTime)
+        //     const startDate = 
+        //     console.log(launchTime)
+        // }
         infoTag.innerText = `
-        Flight Number: 
+        Mission Number: 
         ${results.flight_number}
 
         Mission Name: 
         ${results.name}
 
-        Flight Date: 
+        Mission Date: 
         ${results.date_local}
+
+        Countdown:
+        
 
         Mission Details: 
         ${results.details}
         `
-         ol.appendChild(infoTag)
+    
+        ol.appendChild(infoTag)
 
-         const returnButton = document.createElement('button')
-         returnButton.innerText = "Return"
-         ol.appendChild(returnButton)
-         returnButton.addEventListener('click', () => {
+        const returnButton = document.createElement('button')
+        returnButton.innerText = "Return"
+        ol.appendChild(returnButton)
+        returnButton.addEventListener('click', () => {
             ol.innerHTML = ""
             fetchMissions()
-         })
+        })
 
     })
 
     li.append(aTag)
 
     ol.appendChild(li)
+
+    // const searchBar = document.getElementById('form')
+    
+    // searchBar.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     console.log(e.value)
+   
+    // })
+    
+
 };
 
 fetchMissions()
