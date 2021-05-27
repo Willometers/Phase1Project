@@ -1,8 +1,6 @@
 
-
 document.addEventListener('DOMContentLoaded', function () {
     loadData();
-    
 })
 
 function loadData() {
