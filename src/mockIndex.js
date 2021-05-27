@@ -11,7 +11,6 @@ fetch(LAUNCH_URL)
 function addList(results) {
     const ol = document.querySelector('#mission-list');
     const li = document.createElement('li');
-    const form = document.querySelector('#form')
 
     const aTag = document.createElement('a')
     aTag.href = '#'
@@ -23,6 +22,16 @@ function addList(results) {
         imageTag.src = results.links.patch.small
         ol.appendChild(imageTag)
         const infoTag = document.createElement('p')
+
+        imageTag.addEventListener('click', () => {
+            const largeImage = results.links.patch.large
+            ol.innerHTML = ""
+            imageTag.src = largeImage
+            ol.appendChild(imageTag)
+            ol.appendChild(returnButton)
+
+            returnButton()
+        })
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());
@@ -65,17 +74,22 @@ function addList(results) {
     li.append(aTag)
 
     ol.appendChild(li)
-    
+
 };
 
-fetchMissions()
+fetchMissions();
 
-function dropDown() {
-    fetch(LAUNCH_URL)
-    .then(res => res.json())
-    .then(flights => {
-        console.log(flights[0].date_utc)
+// const menu = document.querySelector('#menu')
 
-    })}
+// menu.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     const ol = document.querySelector('#mission-list');
+//     const li = document.createElement('li');
+//     fetch(LAUNCH_URL)
+//     .then(res => res.json())
+//     .then(flights => {
+//         console.log(flights[0].date_utc)
 
-dropDown()
+//     })
+
+// })
