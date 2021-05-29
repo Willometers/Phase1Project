@@ -19,30 +19,38 @@ function addList(results) {
     aTag.addEventListener('click', () => {
         ol.innerHTML = ""
         const imageTag = document.createElement('img')
+        const likeButton = document.createElement('button')
+        ol.appendChild(likeButton)
+        likeButton.innerText = "♡"
         imageTag.src = results.links.patch.small
         ol.appendChild(imageTag)
         const infoTag = document.createElement('p')
 
-        imageTag.addEventListener('click', () => {
+    likeButton.addEventListener('click', () => {
+      likeButton.innerText = "❤️"
+    })
+
+    imageTag.addEventListener('click', () => {
             const largeImage = results.links.patch.large
             ol.innerHTML = ""
             imageTag.src = largeImage
             ol.appendChild(imageTag)
             ol.appendChild(returnButton)
-
-            returnButton()
         })
 
         function getTimeRemaining(endtime){
-            const total = Date.parse(endtime) - Date.parse(new Date());
-            days = (total / (1000*60*60*24))
-            if (days > 0)
-                return Math.round(days)
-            else 
-                return ("Blasted Off!")
-          }
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        days = (total / (1000*60*60*24))
+        if (days > 0)
+            return Math.round(days)
+        else 
+            return ("Blasted Off!")
+        }
 
         infoTag.innerText = `
+
+        Click Patch to Enlarge
+
         Mission Number: 
         ${results.flight_number}
 
@@ -60,15 +68,16 @@ function addList(results) {
         `
     
         ol.appendChild(infoTag)
-
+        
         const returnButton = document.createElement('button')
-        returnButton.innerText = "Return"
+        returnButton.innerText = "Home"
         ol.appendChild(returnButton)
         returnButton.addEventListener('click', () => {
             ol.innerHTML = ""
             fetchMissions()
         })
 
+    
     })
 
     li.append(aTag)
@@ -78,18 +87,3 @@ function addList(results) {
 };
 
 fetchMissions();
-
-// const menu = document.querySelector('#menu')
-
-// menu.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     const ol = document.querySelector('#mission-list');
-//     const li = document.createElement('li');
-//     fetch(LAUNCH_URL)
-//     .then(res => res.json())
-//     .then(flights => {
-//         console.log(flights[0].date_utc)
-
-//     })
-
-// })
