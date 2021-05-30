@@ -69,16 +69,19 @@ function addList(results) {
 
         Mission Details: 
         ${results.details}
+
+        Comments
         `
     
         ol.appendChild(infoTag)
 
-    // home button that returns user to home screen and reloads using fetch
+// home button that returns user to home screen and reloads using fetch
         const returnButton = document.createElement('button')
         returnButton.innerText = "Home"
         ol.appendChild(returnButton)
         returnButton.addEventListener('click', () => {
             ol.innerHTML = ""
+            title.innerText = "Missions"
             fetchMissions()
         })
     
