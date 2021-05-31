@@ -69,8 +69,6 @@ function addList(results) {
 
         Mission Details: 
         ${results.details}
-
-        Comments
         `
     
         ol.appendChild(infoTag)
